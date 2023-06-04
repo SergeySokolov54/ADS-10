@@ -5,7 +5,7 @@
 #include <algorithm>
 
 class Tree {
-private:
+ private:
     struct Node {
         std::vector<Node*> descendants;
         char ch;
@@ -16,18 +16,18 @@ private:
     void createTree(Node*, const std::vector<char>&);
     void makePermutations(Node*, std::vector<char>);
     void createTreePermutations(const std::vector<char>&);
-public:
+ public:
     explicit Tree(const std::vector<char>&);
     std::vector<std::vector<char>> getPermutations() const;
 };
 
-void Tree::createTree(Node* kernel, const std::vector<char>& select) {
+void Tree::createTree(Node* kernel, const std::vector<char>& sel) {
     if (kernel != nullptr) {
-        for (const auto& symbol : select) {
+        for (const auto& symbol : sel) {
             Node* pereh = new Node;
             pereh->ch = symbol;
             kernel->descendants.push_back(pereh);
-            std::vector<char> new_vector(select);
+            std::vector<char> new_vector(sel);
             new_vector.erase(std::find(new_vector.begin(), new_vector.end(), symbol));
             createTree(pereh, new_vector);
         }
