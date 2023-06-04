@@ -27,9 +27,9 @@ void Tree::createTree(Node* kernel, const std::vector<char>& sel) {
             Node* pereh = new Node;
             pereh->ch = symbol;
             kernel->descendants.push_back(pereh);
-            std::vector<char> new_vector(sel);
-            new_vector.erase(std::find(new_vector.begin(), new_vector.end(), symbol));
-            createTree(pereh, new_vector);
+            std::vector<char> vec(sel);
+            vec.erase(std::find(vec.begin(), vec.end(), symbol));
+            createTree(pereh, vec);
         }
     }
 }
